@@ -31,10 +31,11 @@ var number = getInputVal('number');
 var emailid = getInputVal('emailid');
 
 
+
 // Save message
  saveMessage(name, number, emailid);
 
- 
+
 }
 
 
@@ -53,6 +54,7 @@ var newMessageRef = messagesRef.push();
 newMessageRef.set({
 name: name,
 number: number,
-emailid:emailid
+emailid:emailid,
+
 });
 }
