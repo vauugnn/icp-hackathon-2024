@@ -178,11 +178,11 @@
             <img src="image/book-img.svg" alt="">
         </div>
 
-        <form action="">
+        <form action="" id="contactForm">
             <h3>book appointment</h3>
-            <input type="text" placeholder="your name" class="box">
-            <input type="number" placeholder="your number" class="box">
-            <input type="email" placeholder="your email" class="box">
+            <input type="text" id="name" placeholder="your name" class="box">
+            <input type="number" id="number" placeholder="your number" class="box">
+            <input type="text" id="emailid" placeholder="your email" class="box">
             <input type="text" id="default" list="languages"  placeholder ="select your hospital"class="box">
             <datalist id="languages">  
     <option value="High Court of Agartala">
@@ -191,7 +191,7 @@
     <option value="High Court of Karnataka">
         </datalist>
             <input type="date" class="box">
-            <input type="submit" value="book now" class="btn">        </form>
+             <button type="submit"> Submit</button>       </form>
 
     </div>
 
@@ -269,7 +269,9 @@
 
 
 <!-- custom js file link  -->
+ <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 <script src="js/script.js"></script>
+<script src="./mail.js"></script>
 
 </body>
 </html>
