@@ -1,4 +1,4 @@
-  // Your web app's Firebase configuration
+  // Your web app's Firebase configuratios - contactForm 
   var config = {
     apiKey: "AIzaSyDbBrNc4WcTZEx9ocRM2GinUqVnLXSrsyE",
     authDomain: "contactform-1b537.firebaseapp.com",
