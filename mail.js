@@ -7,6 +7,7 @@
     storageBucket: "contactform-1b537.appspot.com",
     messagingSenderId: "74572097718",
     appId: "1:74572097718:web:bae8db724ab7450c1f9e17"
+    
   };
 
   // Initialize Firebase
