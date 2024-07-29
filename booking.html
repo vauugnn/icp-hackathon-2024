@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Form</title>
+    <link rel="stylesheet" href="css/booking.css">
+</head>
+<body>
+    <h1 class="title">Multi Step Form</h1>
+    <form id="signUpForm" class="form-container" action="#!">
+        <!-- Start step indicators -->
+        <div class="form-header">
+            <span class="stepIndicator active">Basic Information</span>
+            <span class="stepIndicator">Address</span>
+            <span class="stepIndicator">Primary Symptoms</span>
+        </div>
+        <!-- End step indicators -->
+
+        <!-- Step one -->
+        <div class="step">
+            <p>Basic Information</p>
+            <div class="input-container">
+                <input type="text" placeholder="Name" name="name" class="input-field" />
+            </div>
+            <div class="input-container">
+                <input type="int" placeholder="Age" name="age" class="input-field" />
+            </div>
+            <div class="input-container">
+                <input type="text" placeholder="Gender" name="gender" class="input-field" />
+            </div>
+        </div>
+
+        <!-- Step two -->
+        <div class="step">
+            <p>Address</p>
+            <div class="input-container">
+                <input type="text" placeholder="House Number" name="houseno" class="input-field" />
+            </div>
+            <div class="input-container">
+                <input type="text" placeholder="Barangay" name="barangay" class="input-field" />
+            </div>
+            <div class="input-container">
+                <input type="text" placeholder="City" name="city" class="input-field" />
+            </div>
+        </div>
+
+        <!-- Step three -->
+        <div class="step">
+            <p>Primary Concern</p>
+            <div class="input-container">
+                <input type="text" placeholder="Symptoms Presented (Cough, Sore throat, etc)" name="symptoms" class="input-field" />
+            </div>
+            <div class="input-container">
+                <input type="text" placeholder="Duration of Symptoms(Weeks)" name="duration" class="input-field" />
+            </div>
+            <div class="input-container">
+                <input type="text" placeholder="Allergies in Medication" name="allergies" class="input-field" />
+            </div>
+        </div>
+
+        <!-- Start previous / next buttons -->
+        <div class="form-footer">
+            <button type="button" id="prevBtn" class="nav-button" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" class="nav-button next" onclick="nextPrev(1)">Next</button>
+        </div>
+        <!-- End previous / next buttons -->
+    </form>
+
+    <script>
+        var currentTab = 0; // Current tab is set to be the first tab (0)
+        showTab(currentTab); // Display the current tab
+
+        function showTab(n) {
+            var x = document.getElementsByClassName("step");
+            x[n].style.display = "block";
+            if (n == 0) {
+                document.getElementById("prevBtn").style.display = "none";
+            } else {
+                document.getElementById("prevBtn").style.display = "inline";
+            }
+            if (n == (x.length - 1)) {
+                document.getElementById("nextBtn").innerHTML = "Submit";
+            } else {
+                document.getElementById("nextBtn").innerHTML = "Next";
+            }
+            fixStepIndicator(n);
+        }
+
+        function nextPrev(n) {
+            var x = document.getElementsByClassName("step");
+            if (n == 1 && !validateForm()) return false;
+            x[currentTab].style.display = "none";
+            currentTab = currentTab + n;
+            if (currentTab >= x.length) {
+                window.location.href = 'statistics.html'; // Redirect to statistics.html
+                return false;
+            }
+            showTab(currentTab);
+        }
+
+        function validateForm() {
+            var x, y, i, valid = true;
+            x = document.getElementsByClassName("step");
+            y = x[currentTab].getElementsByTagName("input");
+            for (i = 0; i < y.length; i++) {
+                if (y[i].value == "") {
+                    y[i].className += " invalid";
+                    valid = false;
+                }
+            }
+            if (valid) {
+                document.getElementsByClassName("stepIndicator")[currentTab].className += " finish";
+            }
+            return valid;
+        }
+
+        function fixStepIndicator(n) {
+            var i, x = document.getElementsByClassName("stepIndicator");
+            for (i = 0; i < x.length; i++) {
+                x[i].className = x[i].className.replace(" active", "");
+            }
+            x[n].className += " active";
+        }
+    </script>
+</body>
+</html>
+    
